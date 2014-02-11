@@ -1,4 +1,5 @@
-:let g:session_autoload = 'no'
+let g:session_autoload = 'yes'
+
 set nocursorline " don't highlight current line
 
 " keyboard shortcuts
