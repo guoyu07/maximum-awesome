@@ -29,7 +29,6 @@ set encoding=utf-8
 set expandtab                                                " expand tabs to spaces
 set ignorecase                                               " case-insensitive search
 set incsearch                                                " search as you type
-set t_Co=256
 set laststatus=2                                             " always show statusline
 set list                                                     " show trailing whitespace
 set listchars=tab:▸\ ,trail:▫
@@ -122,11 +121,3 @@ if filereadable(expand("~/.vimrc.local"))
   " noremap! jj <ESC>
   source ~/.vimrc.local
 endif
-
-" autocmd VimLeave * nested if (!isdirectory($HOME . "/.vim")) |
-    " \ call mkdir($HOME . "/.vim") |
-    " \ endif |
-    " \ execute "mksession! " . $HOME . "/.vim/Session.vim"
-
-" autocmd VimEnter * nested if argc() == 0 && filereadable($HOME . "/.vim/Session.vim") |
-    " \ execute "source " . $HOME . "/.vim/Session.vim"

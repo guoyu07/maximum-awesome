@@ -1,4 +1,5 @@
 let g:session_autoload = 'yes'
+set t_Co=256
 
 set nocursorline " don't highlight current line
 
