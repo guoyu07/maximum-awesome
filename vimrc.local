@@ -1,5 +1,6 @@
 set t_Co=256
 
+let g:airline_powerline_fonts = 1
 set nocursorline " don't highlight current line
 
 " keyboard shortcuts
@@ -14,18 +15,21 @@ inoremap jj <ESC>
 " If you do want the AlignMaps mappings, remove this section, remove
 " ~/.vim/bundle/Align, and re-run rake in maximum-awesome.
 function! s:RemoveConflictingAlignMaps()
-  if exists("g:loaded_AlignMapsPlugin")
-    AlignMapsClean
-  endif
+	if exists("g:loaded_AlignMapsPlugin")
+		AlignMapsClean
+	endif
 endfunction
 command! -nargs=0 RemoveConflictingAlignMaps call s:RemoveConflictingAlignMaps()
 silent! autocmd VimEnter * RemoveConflictingAlignMaps
 
 let g:escape_vim_regex = '^$/\'
 
-noremap > :cnext<cr>
-noremap < :cprevious<cr>
+" noremap > :cnext<cr>
+" noremap < :cprevious<cr>
 
-nnoremap <leader>g :call lib#edit#grep_cursor_word()<cr>
-vnoremap <leader>g :call lib#edit#grep_selection()<cr>'
+let g:EclimCompletionMethod = 'omnifunc'
 
+" if !exists('g:neocomplcache_force_omni_patterns')
+"     let g:neocomplcache_force_omni_patterns = {}
+" endif
+" let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
