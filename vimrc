@@ -29,6 +29,7 @@ set encoding=utf-8
 set ignorecase                                               " case-insensitive search
 set hlsearch                                                 " Highlight search terms
 set incsearch                                                " search as you type
+set cursorline                                               " Highlight current line
 set laststatus=2                                             " always show statusline
 set list                                                     " show trailing whitespace
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:.               " Highlight problematic whitespace
@@ -43,6 +44,9 @@ set tabstop=4                                                " actual tabs occup
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc,*.class,*.so,*.zip
 set wildmenu                                                 " show a navigable menu for tab completion
 set wildmode=longest,list,full
+
+" set CursorLine backgroud color
+hi CursorLine ctermbg=237 cterm=none guibg=#3A3A3A gui=none
 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
@@ -106,22 +110,42 @@ autocmd User Rails silent! Rnavcommand stepdefinition features/step_definitions 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
-set backup                    " backups are nice ...
-set history=1000              " store a ton of history (default is 20)
-set undofile                  " so is persistent undo ...
-set undolevels=1000           " maximum number of changes that can be undone
-set undoreload=10000          " maximum number lines to save for undo on a buffer reload
+" General {
 
-" Add exclusions to mkview and loadview
-" eg: *.*, svn-commit.tmp
-let g:skipview_files = [
-		\ '\[example pattern\]'
-		\ ]
+	set backup                    " backups are nice ...
+	set history=1000              " store a ton of history (default is 20)
+	set undofile                  " so is persistent undo ...
+	set undolevels=1000           " maximum number of changes that can be undone
+	set undoreload=10000          " maximum number lines to save for undo on a buffer reload
+	scriptencoding utf-8
 
-autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
-" Instead of reverting the cursor to the last position in the buffer, we
-" set it to the first line when editing a git commit message
-au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+	" Add exclusions to mkview and loadview
+	" eg: *.*, svn-commit.tmp
+	let g:skipview_files = [
+			\ '\[example pattern\]'
+			\ ]
+
+	autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
+	" Instead of reverting the cursor to the last position in the buffer, we
+	" set it to the first line when editing a git commit message
+	au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+
+	" http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
+	" Restore cursor to file position in previous editing session
+	" To disable this, add the following to your .vimrc.before.local file:
+	"   let g:spf13_no_restore_cursor = 1
+	function! ResCur()
+		if line("'\"") <= line("$")
+			normal! g`"
+			return 1
+		endif
+	endfunction
+
+	augroup resCur
+		autocmd!
+		autocmd BufWinEnter * call ResCur()
+	augroup END
+" }
 
 " Fix Cursor in TMUX
 if exists('$TMUX')
@@ -307,6 +331,7 @@ endif
 	let g:neocomplcache_enable_auto_delimiter = 1
 	let g:neocomplcache_max_list = 15
 	let g:neocomplcache_force_overwrite_completefunc = 1
+	let g:neocomplcache_disable_auto_complete = 1
 
 	" SuperTab like snippets behavior.
 	imap <silent><expr><TAB> neosnippet#expandable() ?
