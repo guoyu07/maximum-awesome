@@ -73,11 +73,13 @@ nmap <leader>c <Plug>Kwbd
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " bind K to grep word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " plugin settings
 let g:EasyGrepFilesToExclude=".svn,.git"
 let g:EasyGrepRecursive=1
+let g:EasyGrepCommand=1
+
 let g:ctrlp_match_window = 'order:ttb,max:20'
 let g:NERDSpaceDelims=1
 let g:gitgutter_enabled = 0
