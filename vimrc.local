@@ -31,5 +31,5 @@ if !exists('g:neocomplcache_force_omni_patterns')
 endif
 let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
 
-nnoremap <silent> <buffer> <leader>i :JavaImport<cr>
-nnoremap <silent> <buffer> <cr> :JavaSearchContext<cr>
+au FileType java nnoremap <silent> <leader>i :JavaImport<cr>
+au FileType java nnoremap <silent> <leader>g :JavaSearchContext<cr>
