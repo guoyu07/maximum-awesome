@@ -1,6 +1,6 @@
 set t_Co=256
 
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 " set nocursorline " don't highlight current line
 
 " " keyboard shortcuts
@@ -24,12 +24,41 @@ let g:airline_powerline_fonts = 1
 
 " let g:escape_vim_regex = '^$/\'
 
+" " Function to activate a virtualenv in the embedded interpreter for
+" " omnicomplete and other things like that.
+" function LoadVirtualEnv(path)
+"     let activate_this = a:path . '/bin/activate_this.py'
+"     if getftype(a:path) == "dir" && filereadable(activate_this)
+"         python << EOF
+" import vim
+" activate_this = vim.eval('l:activate_this')
+" execfile(activate_this, dict(__file__=activate_this))
+" EOF
+"     endif
+" endfunction
+
+" " Load up a 'stable' virtualenv if one exists in ~/.virtualenv
+" let defaultvirtualenv = $HOME . "/.virtualenvs/virtualenv"
+
+" " Only attempt to load this virtualenv if the defaultvirtualenv
+" " actually exists, and we aren't running with a virtualenv active.
+" if has("python")
+"     if empty($VIRTUAL_ENV) && getftype(defaultvirtualenv) == "dir"
+"         call LoadVirtualEnv(defaultvirtualenv)
+"     endif
+" endif
+
 let g:EclimCompletionMethod = 'omnifunc'
 
-if !exists('g:neocomplcache_force_omni_patterns')
-	let g:neocomplcache_force_omni_patterns = {}
-endif
-let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
+" if !exists('g:neocomplcache_force_omni_patterns')
+"     let g:neocomplcache_force_omni_patterns = {}
+" endif
+" let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
 
 au FileType java nnoremap <silent> <leader>i :JavaImport<cr>
 au FileType java nnoremap <silent> <leader>g :JavaSearchContext<cr>
+
+" let VIMPRESS=[{'username':'zencodex',
+"                \'password':'TairGee20!)',
+"                \'blog_url':'http://www.yinqisen.cn'
+"                \}]

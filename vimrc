@@ -366,6 +366,7 @@ endif
 	" }
 
 	" Enable omni completion.
+	autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -497,6 +498,12 @@ endif
 	" }
 " }
 
+"let g:syntastic_python_checker="flake8, pyflakes, pep8, pylint"
+let g:syntastic_python_checkers=['pyflakes']
+
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+" let g:syntastic_quiet_messages = { "type": "style" }
+
 " Go crazy!
 if filereadable(expand("~/.vimrc.local"))
 	" In your .vimrc.local, you might like:
@@ -510,3 +517,7 @@ if filereadable(expand("~/.vimrc.local"))
 	" noremap! jj <ESC>
 	source ~/.vimrc.local
 endif
+
+set imactivatekey=C-space
+inoremap <ESC> <ESC>:set iminsert=0<CR>
+
