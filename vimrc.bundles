@@ -7,23 +7,21 @@ Bundle 'austintaylor/vim-indentobject'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'gmarik/vundle'
 Bundle 'juvenn/mustache.vim'
-Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
 Bundle 'leafgarland/typescript-vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'mileszs/ack.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'nono/vim-handlebars'
-Bundle 'pangloss/vim-javascript'
 " Bundle 'wookiehangover/jshint.vim'
 Bundle 'slim-template/vim-slim'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
+Bundle 'gregsexton/gitv'
 Bundle 'tpope/vim-pastie'
 Bundle 'tpope/vim-ragtag'
-Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
@@ -42,15 +40,55 @@ Bundle 'godlygeek/tabular'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neosnippet'
-Bundle 'honza/vim-snippets'
+
+Bundle 'Lokaltog/vim-easymotion', {'pinned': 1}
 Bundle 'mattn/emmet-vim'
 Bundle 'zencodex/VimRepress'
 Bundle 'hallison/vim-markdown'
-Bundle 'elzr/vim-json'
-Bundle 'gorodinskiy/vim-coloresque'
 Bundle 'joonty/vim-sauce.git'
-Bundle 'joonty/vdebug.git'
-Bundle 'spf13/PIV'
-Bundle 'Lokaltog/vim-easymotion', {'pinned': 1}
+Bundle 'rizzatti/dash.vim'
+
+" Snippets & AutoComplete {
+	Bundle 'Shougo/neosnippet'
+	Bundle 'Shougo/neosnippet-snippets'
+	Bundle 'honza/vim-snippets'
+    Bundle 'Valloric/YouCompleteMe'
+" }
+
+" PHP {
+	" Bundle 'spf13/PIV'
+	" Bundle 'arnaud-lb/vim-php-namespace'
+	" Bundle 'beyondwords/vim-twig'
+	" Bundle 'joonty/vdebug.git'
+" }
+
+" Python {
+	" Pick either python-mode or pyflakes & pydoc
+	Bundle 'klen/python-mode'
+	Bundle 'yssource/python.vim'
+	Bundle 'python_match.vim'
+	Bundle 'pythoncomplete'
+" }
+
+" Javascript {
+	Bundle 'elzr/vim-json'
+	Bundle 'groenewege/vim-less'
+	Bundle 'pangloss/vim-javascript'
+	Bundle 'briancollins/vim-jst'
+	Bundle 'kchmck/vim-coffee-script'
+" }
+
+" HTML {
+	Bundle 'amirh/HTML-AutoCloseTag'
+	Bundle 'hail2u/vim-css3-syntax'
+	Bundle 'gorodinskiy/vim-coloresque'
+	Bundle 'tpope/vim-haml'
+" }
+
+" Ruby {
+	Bundle 'tpope/vim-rails'
+	let g:rubycomplete_buffer_loading = 1
+	"let g:rubycomplete_classes_in_global = 1
+	"let g:rubycomplete_rails = 1
+" }
+

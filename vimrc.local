@@ -48,17 +48,52 @@ set t_Co=256
 "     endif
 " endif
 
+" autodetect file encoding
+let g:fencview_autodetect = 1      "打开文件时自动识别编码
+let g:fencview_checklines = 10     "检查前后10行来判断编码
+" let $FENCVIEW_TELLENC ='tellenc'
+
 let g:EclimCompletionMethod = 'omnifunc'
 
-" if !exists('g:neocomplcache_force_omni_patterns')
-"     let g:neocomplcache_force_omni_patterns = {}
-" endif
-" let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
+if !exists('g:neocomplcache_force_omni_patterns')
+	let g:neocomplcache_force_omni_patterns = {}
+endif
+let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
 
-au FileType java nnoremap <silent> <leader>i :JavaImport<cr>
-au FileType java nnoremap <silent> <leader>g :JavaSearchContext<cr>
+" au FileType java nnoremap <silent> <leader>i :JavaImport<cr>
+" au FileType java nnoremap <silent> <leader>g :JavaSearchContext<cr>
 
-" let VIMPRESS=[{'username':'zencodex',
-"                \'password':'TairGee20!)',
-"                \'blog_url':'http://www.yinqisen.cn'
-"                \}]
+" vdebug options
+" let g:vdebug_options_defaults = {
+" \    "port" : 9000,
+" \    "timeout" : 20,
+" \    "server" : '',
+" \    "on_close" : 'stop',
+" \    "break_on_open" : 1,
+" \    "ide_key" : '',
+" \    "debug_window_level" : 0,
+" \    "debug_file_level" : 0,
+" \    "debug_file" : "",
+" \    "path_maps" : {},
+" \    "watch_window_style" : 'expanded',
+" \    "marker_default" : '⬦',
+" \    "marker_closed_tree" : '▸',
+" \    "marker_open_tree" : '▾',
+" \    "continuous_mode"  : 0
+" \}
+
+let g:vdebug_options = {
+\    "break_on_open" : 0,
+\    "on_close" : 'detach',
+\    "continuous_mode" : 1
+\}
+
+let g:user_emmet_settings = {
+\    'html' : {
+\        'snippets' : {
+\            'jquery' : "<script type=\"text/javascript\" src=\"http://cdn.bootcss.com/jquery/3.1.0/jquery.min.js\"></script>",
+\        }
+\    }
+\}
+
+set nofoldenable    " disable folding
